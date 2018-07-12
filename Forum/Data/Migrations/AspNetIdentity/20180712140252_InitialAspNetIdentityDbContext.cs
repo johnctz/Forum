@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Forum.Data.Migrations.AspNetIdentity
 {
-    public partial class InitialApplicationDbContext : Migration
+    public partial class InitialAspNetIdentityDbContext : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

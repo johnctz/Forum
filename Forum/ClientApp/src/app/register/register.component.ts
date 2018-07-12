@@ -56,9 +56,6 @@ export class RegisterComponent implements OnInit {
       .subscribe(response => {
         console.log(response);
 
-        this.mrRegister = this.modalService.open(RegisterComponent);
-        this.mrRegister.componentInstance.name = 'registerSuccess';
-
         return response;
       }, err => {
         this.serverResponseDescription = err.error.modelError;

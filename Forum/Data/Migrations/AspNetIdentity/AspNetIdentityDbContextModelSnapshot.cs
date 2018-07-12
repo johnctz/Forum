@@ -4,16 +4,14 @@ using Forum.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Forum.Data.Migrations.AspNetIdentity
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180711113443_InitialApplicationDbContext")]
-    partial class InitialApplicationDbContext
+    [DbContext(typeof(AspNetIdentityDbContext))]
+    partial class AspNetIdentityDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,7 +19,7 @@ namespace Forum.Data.Migrations.AspNetIdentity
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Forum.Models.ApplicationUser", b =>
+            modelBuilder.Entity("Forum.Entities.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -196,7 +194,7 @@ namespace Forum.Data.Migrations.AspNetIdentity
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Forum.Models.ApplicationUser")
+                    b.HasOne("Forum.Entities.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -204,7 +202,7 @@ namespace Forum.Data.Migrations.AspNetIdentity
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Forum.Models.ApplicationUser")
+                    b.HasOne("Forum.Entities.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -217,7 +215,7 @@ namespace Forum.Data.Migrations.AspNetIdentity
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Forum.Models.ApplicationUser")
+                    b.HasOne("Forum.Entities.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -225,7 +223,7 @@ namespace Forum.Data.Migrations.AspNetIdentity
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Forum.Models.ApplicationUser")
+                    b.HasOne("Forum.Entities.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

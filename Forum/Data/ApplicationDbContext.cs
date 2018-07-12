@@ -9,14 +9,13 @@ using System.Threading.Tasks;
 
 namespace Forum.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : DbContext
     {
         private readonly IUserInfoService _userInfoService;
         public ApplicationDbContext(
-                DbContextOptions<ApplicationDbContext> options,
-                IUserInfoService userInfoService
-            )
-            : base(options)
+                IUserInfoService userInfoService, 
+                DbContextOptions<ApplicationDbContext> options
+            ) : base(options)
         {
             _userInfoService = userInfoService;
         }
@@ -37,13 +36,14 @@ namespace Forum.Data
             {
                 var entity = entry.Entity as AuditableEntity;
 
+
                 if (entry.State == EntityState.Added)
                 {
-                    //entity.CreatedById = _userInfoService.UserId;
+                    entity.CreatedById = _userInfoService.UserId;
                     entity.CreatedOn = DateTimeOffset.UtcNow;
                 }
 
-                //entity.UpdatedById = _userInfoService.UserId;
+                entity.UpdatedById = _userInfoService.UserId;
                 entity.UpdatedOn = DateTimeOffset.UtcNow;
             }
 

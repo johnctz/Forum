@@ -42,9 +42,13 @@ namespace Forum
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<AspNetIdentityDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("AspNetIdentityConnection")));
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+                            options.UseSqlServer(
+                                Configuration.GetConnectionString("ApplicationDbConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>(o =>
             {
@@ -56,7 +60,7 @@ namespace Forum
                 o.Password.RequiredLength = 4;
             })
                 // services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<AspNetIdentityDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddRazorPagesOptions(options =>
