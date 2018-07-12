@@ -39,11 +39,11 @@ namespace Forum.Data
 
                 if (entry.State == EntityState.Added)
                 {
-                    entity.CreatedById = _userInfoService.UserId;
+                    //entity.CreatedById = _userInfoService.UserId;
                     entity.CreatedOn = DateTimeOffset.UtcNow;
                 }
 
-                entity.UpdatedById = _userInfoService.UserId;
+                //entity.UpdatedById = _userInfoService.UserId;
                 entity.UpdatedOn = DateTimeOffset.UtcNow;
             }
 

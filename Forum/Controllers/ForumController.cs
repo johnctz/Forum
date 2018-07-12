@@ -31,7 +31,7 @@ namespace Forum.Controllers
             return new OkObjectResult(categories);
         }
 
-        [Route("categories")]
+        [Route("category")]
         [HttpPost]
         public async Task<IActionResult> AddCategory(ForumCategory category)
         {
@@ -43,7 +43,7 @@ namespace Forum.Controllers
             return new BadRequestObjectResult(category);
         }
 
-        [Route("categories")]
+        [Route("topic")]
         [HttpPost]
         public async Task<IActionResult> AddTopic(ForumTopic topic)
         {
@@ -56,8 +56,8 @@ namespace Forum.Controllers
         }
 
 
-        [Route("categories")]
-        [HttpPost]
+        [Route("topic")]
+        [HttpDelete]
         public async Task<IActionResult> DeleteTopic(Guid topicId)
         {
             await _forumRepository.DeleteTopic(topicId);

@@ -82,6 +82,7 @@ namespace Forum
 
             services.AddScoped<ICommonRepository, CommonRepository>();
             services.AddScoped<IForumRepository, ForumRepository>();
+            services.AddScoped<IUserInfoService, UserInfoService>();
 
 
             // In production, the Angular files will be served from this directory
